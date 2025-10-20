@@ -5,14 +5,12 @@ This project is mostly an experimentation project around AI tools since I haven'
 
 ## Summary
 
-### Current Status
-- ✅ Repository is public with branch protection enabled
+- ✅ Branch protection enabled
 - ✅ CodeRabbit connected and active
 - ✅ GitHub Copilot Pro subscription active
 - ✅ Copilot CLI installed and authenticated
-- 🔄 PowerShell 7 installed and being evaluated as primary development shell
 
-## CodeRabbit Setup
+## CodeRabbit
 
 CodeRabbit is an AI code review service.  
 See their docs to [easily get started](https://docs.coderabbit.ai/getting-started/quickstart).  
@@ -24,13 +22,13 @@ They are free for open source projects, so hey, we're open source now.
 
 I've added the CodeRabbit review as a required status check for PRs against the main branch.
 
-## GitHub Setup
+## GitHub
 
 I'll want to have the AI push to GitHub by itself, so I absolutely need to protect the main branch. I'm not THAT crazy.  
 I've set up branch protection on the main branch, requiring a pull request.  
 Note: rulesets are only available to public repos or on the Team paid plan. Since I made the repo public for CodeRabbit, no problem here.  
 
-## GitHub Copilot Setup
+## GitHub Copilot
 
 GitHub Copilot will be our AI Agent. It is cheap, integrates easily with GitHub (at least, you'd hope this is easier than with other solutions) and is free for the first 30 days.
 
@@ -44,6 +42,23 @@ GitHub Copilot will be our AI Agent. It is cheap, integrates easily with GitHub 
   - The PAT is not stored in the repo, even if gitignored, because I don't trust that the AI won't expose it
 - Launched Copilot with `copilot` and Logged in to GitHub through the Copilot CLI with the `/login` command
 - Added a ruleset to request a Copilot code review on every PR
+
+Tip: `copilot --allow-all-tools` is auto-mode. Dangerous and powerful.  
+
+## Spec Kit
+
+Spec Kit [requires uv and Python 3.11+](https://github.com/github/spec-kit?tab=readme-ov-file#1-install-specify-cli):
+- `curl -LsSf https://astral.sh/uv/install.sh | sh`
+- `uv python install 3.11`
+- `uv tool install specify-cli --from git+https://github.com/github/spec-kit.git`
+
+With the specify cli installed, we then initialized it:
+- `specify init --here --no-git --script sh --ai copilot`
+- `specify check`
+
+Turns out, GitHub SpecKit doesn't support GitHub Copilot CLI... or at least not obviously.  
+This guy knows: https://www.youtube.com/watch?v=7tjmA_0pl2c  
+TLDR: ???
 
 ## Windows Environment Challenges
 
