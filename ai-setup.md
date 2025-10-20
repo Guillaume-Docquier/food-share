@@ -1,66 +1,9 @@
 # AI Tools Setup
 
-This document describes the steps taken to set up AI development tools for the food-share project.
-
-## CodeRabbit Setup
-
-1. **Made Repository Public**
-   - Changed the food-share repository visibility to public
-   - This enabled:
-     - GitHub branch protection via branch rulesets
-     - Free access to CodeRabbit
-
-2. **Connected CodeRabbit to GitHub**
-   - Visited the CodeRabbit website
-   - Connected the CodeRabbit service to the GitHub account
-   - Configured repository access
-
-3. **CodeRabbit CLI Attempt**
-   - Attempted to install the CodeRabbit CLI in Git Bash on Windows
-   - **Result**: Installation failed - Git Bash is not a supported environment
-   - **Reason**: CodeRabbit CLI requires either WSL or PowerShell 7 on Windows
-
-## GitHub Copilot Setup
-
-1. **Activated GitHub Copilot Pro Subscription**
-   - Subscribed to GitHub Copilot Pro plan
-
-2. **Installed Copilot CLI**
-   - Installed the GitHub Copilot CLI tool
-
-3. **Authentication Setup**
-   - Created a Personal Access Token (PAT) in GitHub
-   - Loaded the PAT into the `GH_TOKEN` environment variable
-   - Logged in to GitHub through the Copilot CLI using the token
-
-## Windows Environment Challenges
-
-### CLI Compatibility Issues
-During setup, discovered that both CodeRabbit CLI and GitHub Copilot CLI don't work on Windows unless running in:
-- WSL (Windows Subsystem for Linux), or
-- PowerShell 7
-
-Git Bash is not sufficient for these modern CLI tools.
-
-### WSL Evaluation
-- Began setting up WSL as a potential solution
-- Realized WSL introduces significant complexity and overhead for development workflows
-- WSL felt like going down a rabbit hole with many configuration considerations
-- Decided to explore simpler alternatives
-
-### PowerShell 7 Solution
-- Chose to install PowerShell 7 instead of committing to WSL
-- PowerShell 7 provides:
-  - Better integration with Windows environment
-  - Support for modern CLI tools
-  - Less complexity than WSL
-- Currently evaluating how well this approach works for daily development
+This document describes the steps taken to set up AI development tools for the food-share project.  
+This project is mostly an experimentation project around AI tools since I haven't really used them thus far, so we'll abuse all of them to test their limits.   
 
 ## Summary
-
-Both AI tools are now configured and ready to use:
-- **CodeRabbit**: Active for automated code reviews on pull requests
-- **GitHub Copilot CLI**: Authenticated and available for command-line assistance
 
 ### Current Status
 - ✅ Repository is public with branch protection enabled
@@ -68,3 +11,54 @@ Both AI tools are now configured and ready to use:
 - ✅ GitHub Copilot Pro subscription active
 - ✅ Copilot CLI installed and authenticated
 - 🔄 PowerShell 7 installed and being evaluated as primary development shell
+
+## CodeRabbit Setup
+
+CodeRabbit is an AI code review service.  
+See their docs to [easily get started](https://docs.coderabbit.ai/getting-started/quickstart).  
+They are free for open source projects, so hey, we're open source now.
+
+- Changed the food-share repository visibility to public
+- Connected [CodeRabbit to GitHub](https://app.coderabbit.ai/login?free-trial)
+- Attempted to install the [CodeRabbit CLI](https://www.coderabbit.ai/cli) in Git Bash on Windows, but it requires WSL, so we didn't install it
+
+I've added the CodeRabbit review as a required status check for PRs against the main branch.
+
+## GitHub Setup
+
+I'll want to have the AI push to GitHub by itself, so I absolutely need to protect the main branch. I'm not THAT crazy.  
+I've set up branch protection on the main branch, requiring a pull request.  
+Note: rulesets are only available to public repos or on the Team paid plan. Since I made the repo public for CodeRabbit, no problem here.  
+
+## GitHub Copilot Setup
+
+GitHub Copilot will be our AI Agent. It is cheap, integrates easily with GitHub (at least, you'd hope this is easier than with other solutions) and is free for the first 30 days.
+
+- Activated GitHub Copilot [Pro Subscription](https://github.com/features/copilot)
+- Installed [Copilot CLI](https://github.com/features/copilot/cli) via `npm install -g @github/copilot`
+- Created a Personal Access Token (PAT) in GitHub since I want my AI to read and create issues and pull requests with:
+  - Copilot Requests read
+  - Issues write
+  - Pull Requests write
+- Loaded the PAT into the `GH_TOKEN` environment variable for the GitHub MCP server auth
+  - The PAT is not stored in the repo, even if gitignored, because I don't trust that the AI won't expose it
+- Launched Copilot with `copilot` and Logged in to GitHub through the Copilot CLI with the `/login` command
+- Added a ruleset to request a Copilot code review on every PR
+
+## Windows Environment Challenges
+
+### CLI Compatibility Issues
+During setup, discovered that both CodeRabbit CLI and GitHub Copilot CLI don't work on Windows in Git bash:
+- Copilot CLI needs [PowerShell 6+](https://github.com/github/copilot-cli?tab=readme-ov-file#prerequisites) or WSL
+- CodeRabbit CLI needs WSL
+
+### WSL Evaluation
+I've never used WSL, and it seems fine.  
+However, I'm not equipped to bootstrap myself in Ubuntu since I'd have to reinstall all the tools (git, node, etc) and clone the code.  
+Also, I'd have to configure webstorm to work with WSL.  
+All these things are possible, and probably very fine, but I was looking for something simpler
+
+### PowerShell 7 Solution
+I chose to install PowerShell 7 instead of committing to WSL.  
+Just installing PowerShell 7 made the Copilot CLI work, so I stuck with this.  
+Too bad for CodeRabbit, I'll rely on their GitHub integration only.  
