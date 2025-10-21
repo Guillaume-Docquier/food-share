@@ -52,13 +52,13 @@ Spec Kit [requires uv and Python 3.11+](https://github.com/github/spec-kit?tab=r
 - `uv python install 3.11`
 - `uv tool install specify-cli --from git+https://github.com/github/spec-kit.git`
 
-With the specify cli installed, we then initialized it:
+With the specify cli installed, I then initialized it:
 - `specify init --here --no-git --script sh --ai copilot`
 - `specify check`
 
 Turns out, GitHub SpecKit doesn't support GitHub Copilot CLI... or at least not obviously.  
 This guy knows: https://www.youtube.com/watch?v=7tjmA_0pl2c  
-TLDR: ???
+TLDR: You can add the prompt "You can use slash commands from .github/prompts" in `.github/copilot-instructions.md` and use the slash commands. Copilot will know where to look and what to do!
 
 ## Windows Environment Challenges
 
