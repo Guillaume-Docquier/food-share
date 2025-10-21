@@ -9,6 +9,7 @@ This project is mostly an experimentation project around AI tools since I haven'
 - ✅ CodeRabbit connected and active
 - ✅ GitHub Copilot Pro subscription active
 - ✅ Copilot CLI installed and authenticated
+- ✅ Spec Kit set up, but not used yet
 
 ## CodeRabbit
 
