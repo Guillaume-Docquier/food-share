@@ -46,3 +46,28 @@ export function isDraw(cells: Cells): boolean {
 export function nextPlayer(p: Player): Player {
   return p === 'X' ? 'O' : 'X'
 }
+
+export function availableMoves(cells: Cells): number[] {
+  const idxs: number[] = []
+  for (let i = 0; i < cells.length; i++) if (cells[i] === null) idxs.push(i)
+  return idxs
+}
+
+export function getBestMove(cells: Cells, ai: Player): number {
+  const opp: Player = nextPlayer(ai)
+  // 1) Win if possible
+  for (const i of availableMoves(cells)) {
+    const t = cells.slice(); t[i] = ai
+    if (isWin(t) === ai) return i
+  }
+  // 2) Block opponent win
+  for (const i of availableMoves(cells)) {
+    const t = cells.slice(); t[i] = opp
+    if (isWin(t) === opp) return i
+  }
+  // 3) Heuristic preference: center, corners, edges
+  const pref = [4, 0, 2, 6, 8, 1, 3, 5, 7]
+  for (const i of pref) if (cells[i] === null) return i
+  // 4) Fallback
+  return availableMoves(cells)[0] ?? -1
+}
