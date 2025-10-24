@@ -14,6 +14,7 @@ export default function App() {
   const [message, setMessage] = useState<string>('')
   const [vsAI, setVsAI] = useState<boolean>(true) // AI plays as 'O'
   const [size, setSize] = useState<number>(3)
+  const [dark, setDark] = useState<boolean>(false)
 
   const handleCellClick = useCallback((idx: number) => {
     setState((prev) => {
@@ -65,6 +66,10 @@ export default function App() {
     return () => clearTimeout(timer)
   }, [vsAI, state])
 
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', dark)
+  }, [dark])
+
   const reset = () => {
     setState(initialState(size))
     setMessage('')
@@ -73,7 +78,7 @@ export default function App() {
   const status = state.isOver ? (state.winner ? `${state.winner} wins` : 'Draw') : `${state.currentPlayer} to play`
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-gray-100">
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-gray-100 dark:bg-gray-950 dark:text-gray-100">
       <h1 className="text-2xl font-semibold mb-4">Tic Tac Toe</h1>
       <div className="mb-2 text-gray-700" role="status" aria-live="polite">{status}</div>
       {message && <div className="text-sm text-amber-600 mb-2">{message}</div>}
@@ -88,8 +93,10 @@ export default function App() {
         <button className="px-3 py-2 rounded border border-gray-300 bg-white hover:bg-gray-50" onClick={() => { const ns = size === 3 ? 4 : 3; setSize(ns); setState(initialState(ns)); setMessage('') }}>
           Board: {size}x{size}
         </button>
+        <button className="px-3 py-2 rounded border border-gray-300 bg-white hover:bg-gray-50" onClick={() => setDark(d => !d)}>
+          Theme: {dark ? 'Dark' : 'Light'}
+        </button>
       </div>
     </div>
   )
 }
-

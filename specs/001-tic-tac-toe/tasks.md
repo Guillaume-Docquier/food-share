@@ -30,7 +30,7 @@ description: "Task list template for feature implementation"
 
 - [X] T001 Create `frontend/` project with Vite React TS template (in repo root)
       - Command: `npm create vite@latest frontend -- --template react-ts`
-- [ ] T002 [P] Add Tailwind CSS (dev deps) and initialize config in `frontend/`
+- [X] T002 [P] Add Tailwind CSS (dev deps) and initialize config in `frontend/`
       - Command: `npm i -D tailwindcss postcss autoprefixer && npx tailwindcss init -p`
 - [X] T003 [P] Configure Tailwind content in `frontend/tailwind.config.js` to include `./index.html`,`./src/**/*.{ts,tsx}`
 - [X] T004 [P] Add base styles file `frontend/src/index.css` (or `styles/globals.css`) with Tailwind directives
@@ -118,8 +118,8 @@ description: "Task list template for feature implementation"
 
 - [X] T029 [P] Ensure board renders without horizontal scrolling on small screens
 - [X] T030 [P] Add basic keyboard support (optional): arrow keys move focus; Enter places mark
-- [ ] T031 [P] Light/dark mode toggle (optional) if trivial with Tailwind
-- [ ] T032 [P] Documentation update: add demo steps to `README.md` and link to deploy URL
+- [X] T031 [P] Light/dark mode toggle (optional) if trivial with Tailwind
+- [X] T032 [P] Documentation update: add demo steps to `README.md` and link to deploy URL
 - [ ] T033 [P] Deploy static build from `frontend/dist` (GitHub Pages/Netlify/Vercel)
 - [ ] T034 [P] Add screenshot/GIF to README after demo
 

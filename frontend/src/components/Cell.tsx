@@ -31,7 +31,7 @@ export default function Cell({ value, index, size, onClick, isWinning }: Props) 
         else if (e.key === 'ArrowUp') ni = Math.max(0, (row - 1) * size + col);
         if (ni !== index) { e.preventDefault(); (document.getElementById(`cell-${ni}`) as HTMLButtonElement | null)?.focus(); }
       }}
-      className={`w-full aspect-square bg-white text-3xl font-bold flex items-center justify-center border border-gray-300 rounded hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 ${isWinning ? 'ring-4 ring-emerald-400 animate-win-cell' : ''}`}
+      className={`w-full aspect-square bg-white dark:bg-gray-800 text-3xl font-bold flex items-center justify-center border border-gray-300 dark:border-gray-600 rounded hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 ${isWinning ? 'ring-4 ring-emerald-400 animate-win-cell' : ''}`}
       onClick={onClick}
     >
       {value}
