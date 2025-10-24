@@ -28,14 +28,14 @@ description: "Task list template for feature implementation"
 
 **Purpose**: Project initialization and basic structure
 
-- [ ] T001 Create `frontend/` project with Vite React TS template (in repo root)
+- [X] T001 Create `frontend/` project with Vite React TS template (in repo root)
       - Command: `npm create vite@latest frontend -- --template react-ts`
 - [ ] T002 [P] Add Tailwind CSS (dev deps) and initialize config in `frontend/`
       - Command: `npm i -D tailwindcss postcss autoprefixer && npx tailwindcss init -p`
-- [ ] T003 [P] Configure Tailwind content in `frontend/tailwind.config.js` to include `./index.html`,`./src/**/*.{ts,tsx}`
-- [ ] T004 [P] Add base styles file `frontend/src/index.css` (or `styles/globals.css`) with Tailwind directives
+- [X] T003 [P] Configure Tailwind content in `frontend/tailwind.config.js` to include `./index.html`,`./src/**/*.{ts,tsx}`
+- [X] T004 [P] Add base styles file `frontend/src/index.css` (or `styles/globals.css`) with Tailwind directives
       - Contents: `@tailwind base; @tailwind components; @tailwind utilities;`
-- [ ] T005 [P] Wire Tailwind CSS import in `frontend/src/main.tsx` (or `App.tsx`) to load the base styles
+- [X] T005 [P] Wire Tailwind CSS import in `frontend/src/main.tsx` (or `App.tsx`) to load the base styles
 - [ ] T006 [P] Initialize shadcn/ui in `frontend/` and generate a Button component
       - Commands: `npx shadcn@latest init -d && npx shadcn@latest add button`
 
@@ -45,9 +45,9 @@ description: "Task list template for feature implementation"
 
 **Purpose**: Minimal app shell and core logic helpers
 
-- [ ] T007 Create `frontend/src/lib/game.ts` with helpers: `initialState()`, `isWin(cells)`, `isDraw(cells)`, `nextPlayer(player)`
-- [ ] T008 Create base app shell `frontend/src/App.tsx` with container layout and placeholder board
-- [ ] T009 [P] Add minimal layout styles (Tailwind classes) to center board and controls
+- [X] T007 Create `frontend/src/lib/game.ts` with helpers: `initialState()`, `isWin(cells)`, `isDraw(cells)`, `nextPlayer(player)`
+- [X] T008 Create base app shell `frontend/src/App.tsx` with container layout and placeholder board
+- [X] T009 [P] Add minimal layout styles (Tailwind classes) to center board and controls
 
 **Checkpoint**: Foundation ready - user story implementation can now begin
 
@@ -59,12 +59,12 @@ description: "Task list template for feature implementation"
 
 ### Implementation for User Story 1
 
-- [ ] T010 [P] [US1] Create `frontend/src/components/Cell.tsx` (props: value, onClick, index)
-- [ ] T011 [P] [US1] Create `frontend/src/components/Board.tsx` rendering 9 Cell components in a 3x3 grid
-- [ ] T012 [US1] Implement state in `App.tsx`: `cells: ("X"|"O"|null)[]`, `currentPlayer`, `isOver`, `winner`, `isDraw`, `moveCount`
-- [ ] T013 [US1] Implement click handler in `App.tsx` to place mark if cell empty and game not over
-- [ ] T014 [US1] Integrate win/draw detection via `lib/game.ts` and lock board on game end
-- [ ] T015 [US1] Style board cells (square, responsive) using Tailwind utility classes
+- [X] T010 [P] [US1] Create `frontend/src/components/Cell.tsx` (props: value, onClick, index)
+- [X] T011 [P] [US1] Create `frontend/src/components/Board.tsx` rendering 9 Cell components in a 3x3 grid
+- [X] T012 [US1] Implement state in `App.tsx`: `cells: ("X"|"O"|null)[]`, `currentPlayer`, `isOver`, `winner`, `isDraw`, `moveCount`
+- [X] T013 [US1] Implement click handler in `App.tsx` to place mark if cell empty and game not over
+- [X] T014 [US1] Integrate win/draw detection via `lib/game.ts` and lock board on game end
+- [X] T015 [US1] Style board cells (square, responsive) using Tailwind utility classes
 
 ### Manual Test for User Story 1 (checklist)
 
@@ -83,8 +83,8 @@ description: "Task list template for feature implementation"
 
 ### Implementation for User Story 2
 
-- [ ] T020 [US2] Add Restart control (shadcn Button) in `App.tsx`
-- [ ] T021 [US2] Implement reset logic to initial state and ensure X starts
+- [X] T020 [US2] Add Restart control (shadcn Button) in `App.tsx`
+- [X] T021 [US2] Implement reset logic to initial state and ensure X starts
 
 ### Manual Test for User Story 2
 
@@ -101,9 +101,9 @@ description: "Task list template for feature implementation"
 
 ### Implementation for User Story 3
 
-- [ ] T024 [US3] Add turn indicator in `App.tsx` (e.g., "X to play" / "O to play")
-- [ ] T025 [US3] Add end-of-game message ("X wins", "O wins", or "Draw")
-- [ ] T026 [P] [US3] Provide subtle feedback when clicking an occupied cell (e.g., brief shake or muted notice)
+- [X] T024 [US3] Add turn indicator in `App.tsx` (e.g., "X to play" / "O to play")
+- [X] T025 [US3] Add end-of-game message ("X wins", "O wins", or "Draw")
+- [X] T026 [P] [US3] Provide subtle feedback when clicking an occupied cell (e.g., brief shake or muted notice)
 
 ### Manual Test for User Story 3
 
@@ -116,7 +116,7 @@ description: "Task list template for feature implementation"
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T029 [P] Ensure board renders without horizontal scrolling on small screens
+- [X] T029 [P] Ensure board renders without horizontal scrolling on small screens
 - [ ] T030 [P] Add basic keyboard support (optional): arrow keys move focus; Enter places mark
 - [ ] T031 [P] Light/dark mode toggle (optional) if trivial with Tailwind
 - [ ] T032 [P] Documentation update: add demo steps to `README.md` and link to deploy URL
