@@ -68,10 +68,10 @@ description: "Task list template for feature implementation"
 
 ### Manual Test for User Story 1 (checklist)
 
-- [ ] T016 [P] Verify alternating turns and correct symbol placement
-- [ ] T017 [P] Verify occupied cells cannot be changed
-- [ ] T018 [P] Verify win is detected on all 8 lines and prevents further moves
-- [ ] T019 [P] Verify draw on a full board with no winner
+- [X] T016 [P] Verify alternating turns and correct symbol placement
+- [X] T017 [P] Verify occupied cells cannot be changed
+- [X] T018 [P] Verify win is detected on all 8 lines and prevents further moves
+- [X] T019 [P] Verify draw on a full board with no winner
 
 **Checkpoint**: User Story 1 should be fully functional and testable independently
 
@@ -88,8 +88,8 @@ description: "Task list template for feature implementation"
 
 ### Manual Test for User Story 2
 
-- [ ] T022 [P] Restart after win restores clean board and default player
-- [ ] T023 [P] Restart during in-progress game clears state correctly
+- [X] T022 [P] Restart after win restores clean board and default player
+- [X] T023 [P] Restart during in-progress game clears state correctly
 
 **Checkpoint**: User Stories 1 and 2 work independently
 
@@ -107,8 +107,8 @@ description: "Task list template for feature implementation"
 
 ### Manual Test for User Story 3
 
-- [ ] T027 [P] Verify turn indicator updates after each valid move
-- [ ] T028 [P] Verify end-of-game message shows correctly and board is locked
+- [X] T027 [P] Verify turn indicator updates after each valid move
+- [X] T028 [P] Verify end-of-game message shows correctly and board is locked
 
 ---
 
@@ -117,7 +117,7 @@ description: "Task list template for feature implementation"
 **Purpose**: Improvements that affect multiple user stories
 
 - [X] T029 [P] Ensure board renders without horizontal scrolling on small screens
-- [ ] T030 [P] Add basic keyboard support (optional): arrow keys move focus; Enter places mark
+- [X] T030 [P] Add basic keyboard support (optional): arrow keys move focus; Enter places mark
 - [ ] T031 [P] Light/dark mode toggle (optional) if trivial with Tailwind
 - [ ] T032 [P] Documentation update: add demo steps to `README.md` and link to deploy URL
 - [ ] T033 [P] Deploy static build from `frontend/dist` (GitHub Pages/Netlify/Vercel)

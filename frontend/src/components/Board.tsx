@@ -7,6 +7,7 @@ type Props = {
   cells: CellValue[]
   onCellClick: (index: number) => void
   locked?: boolean
+  winningLine?: number[]
 }
 
 /**
@@ -18,12 +19,12 @@ type Props = {
  * @param locked - When true, disables invoking `onCellClick` for clicks.
  * @returns A React element containing the board grid with one Cell component per entry in `cells`.
  */
-export default function Board({ size, cells, onCellClick, locked }: Props) {
+export default function Board({ size, cells, onCellClick, locked, winningLine }: Props) {
   return (
     <div className="w-full max-w-xs sm:max-w-sm">
       <div className="grid gap-2" style={{ gridTemplateColumns: `repeat(${size}, minmax(0, 1fr))` }}>
         {cells.map((v, i) => (
-          <Cell key={i} index={i} value={v} onClick={() => !locked && onCellClick(i)} />
+          <Cell key={i} index={i} size={size} value={v} isWinning={!!winningLine && winningLine.includes(i)} onClick={() => !locked && onCellClick(i)} />
         ))}
       </div>
     </div>
