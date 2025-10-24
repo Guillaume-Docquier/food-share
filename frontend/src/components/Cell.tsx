@@ -7,6 +7,13 @@ type Props = {
   onClick: () => void
 }
 
+/**
+ * Renders a square button that displays a cell value and invokes a callback when clicked.
+ *
+ * @param value - The cell content to display
+ * @param onClick - Callback invoked when the button is clicked
+ * @returns The button element displaying `value` that triggers `onClick` when pressed
+ */
 export default function Cell({ value, onClick }: Props) {
   return (
     <button
