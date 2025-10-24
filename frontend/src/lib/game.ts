@@ -11,8 +11,8 @@ export interface GameState {
   moveCount: number
 }
 
-export const initialState = (): GameState => ({
-  cells: Array(9).fill(null),
+export const initialState = (size: number = 3): GameState => ({
+  cells: Array(size * size).fill(null),
   currentPlayer: 'X',
   winner: null,
   isDraw: false,
@@ -20,27 +20,42 @@ export const initialState = (): GameState => ({
   moveCount: 0,
 })
 
-const lines: [number, number, number][] = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6],
-]
+function generateLines(size: number): number[][] {
+  const lines: number[][] = []
+  // rows
+  for (let r = 0; r < size; r++) {
+    const row: number[] = []
+    for (let c = 0; c < size; c++) row.push(r * size + c)
+    lines.push(row)
+  }
+  // cols
+  for (let c = 0; c < size; c++) {
+    const col: number[] = []
+    for (let r = 0; r < size; r++) col.push(r * size + c)
+    lines.push(col)
+  }
+  // main diag
+  const d1: number[] = []
+  for (let i = 0; i < size; i++) d1.push(i * (size + 1))
+  lines.push(d1)
+  // anti diag
+  const d2: number[] = []
+  for (let i = 1; i <= size; i++) d2.push(i * (size - 1))
+  lines.push(d2)
+  return lines
+}
 
-export function isWin(cells: Cells): Player | null {
-  for (const [a, b, c] of lines) {
-    const v = cells[a]
-    if (v && v === cells[b] && v === cells[c]) return v
+export function isWin(cells: Cells, size: number): Player | null {
+  for (const line of generateLines(size)) {
+    const first = cells[line[0]]
+    if (!first) continue
+    if (line.every((idx) => cells[idx] === first)) return first
   }
   return null
 }
 
-export function isDraw(cells: Cells): boolean {
-  return cells.every((c) => c !== null) && !isWin(cells)
+export function isDraw(cells: Cells, size: number): boolean {
+  return cells.every((c) => c !== null) && !isWin(cells, size)
 }
 
 export function nextPlayer(p: Player): Player {
@@ -53,21 +68,31 @@ export function availableMoves(cells: Cells): number[] {
   return idxs
 }
 
-export function getBestMove(cells: Cells, ai: Player): number {
+export function getBestMove(cells: Cells, ai: Player, size: number): number {
   const opp: Player = nextPlayer(ai)
+  const moves = availableMoves(cells)
   // 1) Win if possible
-  for (const i of availableMoves(cells)) {
+  for (const i of moves) {
     const t = cells.slice(); t[i] = ai
-    if (isWin(t) === ai) return i
+    if (isWin(t, size) === ai) return i
   }
   // 2) Block opponent win
-  for (const i of availableMoves(cells)) {
+  for (const i of moves) {
     const t = cells.slice(); t[i] = opp
-    if (isWin(t) === opp) return i
+    if (isWin(t, size) === opp) return i
   }
-  // 3) Heuristic preference: center, corners, edges
-  const pref = [4, 0, 2, 6, 8, 1, 3, 5, 7]
-  for (const i of pref) if (cells[i] === null) return i
+  // 3) Preference: centers, corners, then others
+  const centers: number[] = []
+  if (size % 2 === 1) {
+    const m = Math.floor(size / 2)
+    centers.push(m * size + m)
+  } else {
+    const a = size / 2 - 1, b = size / 2
+    centers.push(a * size + a, a * size + b, b * size + a, b * size + b)
+  }
+  const corners = [0, size - 1, size * (size - 1), size * size - 1]
+  const pref = [...centers, ...corners]
+  for (const i of pref) if (i >= 0 && i < cells.length && cells[i] === null) return i
   // 4) Fallback
-  return availableMoves(cells)[0] ?? -1
+  return moves[0] ?? -1
 }
