@@ -67,7 +67,9 @@ export default function App() {
   }, [vsAI, state])
 
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', dark)
+    const root = document.documentElement
+    root.classList.toggle('dark', dark)
+    document.body.classList.toggle('dark', dark)
   }, [dark])
 
   const reset = () => {
@@ -80,20 +82,20 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-gray-100 dark:bg-gray-950 dark:text-gray-100">
       <h1 className="text-2xl font-semibold mb-4">Tic Tac Toe</h1>
-      <div className="mb-2 text-gray-700" role="status" aria-live="polite">{status}</div>
+      <div className="mb-2 text-gray-700 dark:text-gray-300" role="status" aria-live="polite">{status}</div>
       {message && <div className="text-sm text-amber-600 mb-2">{message}</div>}
       <Board size={size} cells={state.cells} onCellClick={handleCellClick} locked={state.isOver || (vsAI && state.currentPlayer === 'O')} />
       <div className="mt-4 flex gap-2">
-        <button className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-500" onClick={reset}>
+        <button className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-500 dark:bg-blue-700 dark:hover:bg-blue-600" onClick={reset}>
           Restart
         </button>
-        <button className="px-3 py-2 rounded border border-gray-300 bg-white hover:bg-gray-50" onClick={() => setVsAI(v => !v)}>
+        <button className="px-3 py-2 rounded border border-gray-300 bg-white hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700" onClick={() => setVsAI(v => !v)}>
           Mode: {vsAI ? 'vs Computer (O)' : '2 Players'}
         </button>
-        <button className="px-3 py-2 rounded border border-gray-300 bg-white hover:bg-gray-50" onClick={() => { const ns = size === 3 ? 4 : 3; setSize(ns); setState(initialState(ns)); setMessage('') }}>
+        <button className="px-3 py-2 rounded border border-gray-300 bg-white hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700" onClick={() => { const ns = size === 3 ? 4 : 3; setSize(ns); setState(initialState(ns)); setMessage('') }}>
           Board: {size}x{size}
         </button>
-        <button className="px-3 py-2 rounded border border-gray-300 bg-white hover:bg-gray-50" onClick={() => setDark(d => !d)}>
+        <button className="px-3 py-2 rounded border border-gray-300 bg-white hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700" onClick={() => setDark(d => !d)}>
           Theme: {dark ? 'Dark' : 'Light'}
         </button>
       </div>
