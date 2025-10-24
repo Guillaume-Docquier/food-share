@@ -2,6 +2,13 @@ import React, { useCallback, useState, useEffect } from 'react'
 import Board from './components/Board'
 import { GameState, initialState, isWin, nextPlayer, Cells, getBestMove } from './lib/game'
 
+/**
+ * Top-level Tic Tac Toe application component that manages game state, player interaction, AI turns, and UI controls.
+ *
+ * Manages board cells, current player, move count, win/draw detection, transient UI messages, AI mode (AI plays as 'O'), and board size; provides controls to restart the game, toggle AI/2-player mode, and change the board size.
+ *
+ * @returns The root React element rendering the game UI.
+ */
 export default function App() {
   const [state, setState] = useState<GameState>(initialState(3))
   const [message, setMessage] = useState<string>('')
@@ -85,5 +92,4 @@ export default function App() {
     </div>
   )
 }
-
 
