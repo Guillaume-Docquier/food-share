@@ -27,3 +27,9 @@ Deploy (static hosting):
 - Upload the `frontend/dist` folder to GitHub Pages/Netlify/Vercel.
 - For GitHub Pages under a project site, ensure Vite base is configured if deploying to a subpath.
 
+Live demo:
+- Enable GitHub Pages, then the site will be published automatically by the provided workflow.
+
+Screenshot:
+- ![Tic Tac Toe](docs/screenshot.svg)
+
