@@ -59,7 +59,10 @@ With the specify cli installed, I then initialized it:
 
 Turns out, GitHub SpecKit doesn't support GitHub Copilot CLI... or at least not obviously.  
 This guy knows: https://www.youtube.com/watch?v=7tjmA_0pl2c  
-TLDR: You can add the prompt "You can use slash commands from .github/prompts" in `.github/copilot-instructions.md` and use the slash commands. Copilot will know where to look and what to do!
+TLDR: He says you can add the prompt "You can use slash commands from .github/prompts" in `.github/copilot-instructions.md` and use the slash commands and Copilot should know where to look and what to do. However, I found that it didn't affect Copilot.  
+Instead, I start the session with "Read all the files under @.github\ and get familiar with the speckit methodology. Follow any
+links to discover other things." and Copilot properly discovers SpecKit.  
+This is kind of annoying, maybe it would be worth it to use VSCode with the Copilot extension instead of the Copilot CLI.
 
 ## Windows Environment Challenges
 
@@ -78,3 +81,7 @@ All these things are possible, and probably very fine, but I was looking for som
 I chose to install PowerShell 7 instead of committing to WSL.  
 Just installing PowerShell 7 made the Copilot CLI work, so I stuck with this.  
 Too bad for CodeRabbit, I'll rely on their GitHub integration only.  
+
+### SpecKit issues from Copilot in GitBash
+While the Copilot CLI requires PowerShell7 to be installed but still works from GitBash, SpecKit doesn't.  
+On Windows, I found that it worked much better if using PowerShell end to end and initialize SpecKit with the PowerShell scripts.  
