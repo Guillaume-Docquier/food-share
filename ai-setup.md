@@ -64,6 +64,11 @@ Instead, I start the session with "Read all the files under @.github\ and get fa
 links to discover other things." and Copilot properly discovers SpecKit.  
 This is kind of annoying, maybe it would be worth it to use VSCode with the Copilot extension instead of the Copilot CLI.
 
+### Conclusion
+
+I tried it with the GitHub Copilot CLI and with the VSCode Copilot Chat. While the experience in Copilot Chat was better, I still didn't find it particularly great. Maybe it's the models, but when starting from scratch, it had a lot of difficulty with bootstrapping the project even when I specified all the tech choices.  
+Maybe I'll revisit it later, with a bootstrapped project.  
+
 ## Windows Environment Challenges
 
 ### CLI Compatibility Issues
