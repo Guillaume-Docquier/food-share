@@ -5,8 +5,11 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types"
+    "format": "prettier --check . --ignore-unknown",
+    "format:fix": "prettier --write . --ignore-unknown --list-different",
+    "test": "turbo run test",
+    "check-types": "turbo run check-types",
+    "all": "turbo run lint check-types build test"
   },
   "devDependencies": {
     "prettier": "^3.6.2",
@@ -16,5 +19,9 @@
   "packageManager": "pnpm@10.19.0+sha512.c9fc7236e92adf5c8af42fd5bf1612df99c2ceb62f27047032f4720b33f8eacdde311865e91c411f2774f618d82f320808ecb51718bfa82c060c4ba7c76a32b8",
   "engines": {
     "node": ">=18"
+  },
+  "prettier": {
+    "printWidth": 140,
+    "semi": false
   }
 }

@@ -1,7 +1,7 @@
 # AI Tools Setup
 
 This document describes the steps taken to set up AI development tools for the food-share project.  
-This project is mostly an experimentation project around AI tools since I haven't really used them thus far, so we'll abuse all of them to test their limits.   
+This project is mostly an experimentation project around AI tools since I haven't really used them thus far, so we'll abuse all of them to test their limits.
 
 ## Summary
 
@@ -27,7 +27,7 @@ I've added the CodeRabbit review as a required status check for PRs against the 
 
 I'll want to have the AI push to GitHub by itself, so I absolutely need to protect the main branch. I'm not THAT crazy.  
 I've set up branch protection on the main branch, requiring a pull request.  
-Note: rulesets are only available to public repos or on the Team paid plan. Since I made the repo public for CodeRabbit, no problem here.  
+Note: rulesets are only available to public repos or on the Team paid plan. Since I made the repo public for CodeRabbit, no problem here.
 
 ## GitHub Copilot
 
@@ -44,16 +44,18 @@ GitHub Copilot will be our AI Agent. It is cheap, integrates easily with GitHub 
 - Launched Copilot with `copilot` and Logged in to GitHub through the Copilot CLI with the `/login` command
 - Added a ruleset to request a Copilot code review on every PR
 
-Tip: `copilot --allow-all-tools` is auto-mode. Dangerous and powerful.  
+Tip: `copilot --allow-all-tools` is auto-mode. Dangerous and powerful.
 
 ## Spec Kit
 
 Spec Kit [requires uv and Python 3.11+](https://github.com/github/spec-kit?tab=readme-ov-file#1-install-specify-cli):
+
 - `curl -LsSf https://astral.sh/uv/install.sh | sh`
 - `uv python install 3.11`
 - `uv tool install specify-cli --from git+https://github.com/github/spec-kit.git`
 
 With the specify cli installed, I then initialized it:
+
 - `specify init --here --no-git --script sh --ai copilot`
 - `specify check`
 
@@ -67,26 +69,31 @@ This is kind of annoying, maybe it would be worth it to use VSCode with the Copi
 ### Conclusion
 
 I tried it with the GitHub Copilot CLI and with the VSCode Copilot Chat. While the experience in Copilot Chat was better, I still didn't find it particularly great. Maybe it's the models, but when starting from scratch, it had a lot of difficulty with bootstrapping the project even when I specified all the tech choices.  
-Maybe I'll revisit it later, with a bootstrapped project.  
+Maybe I'll revisit it later, with a bootstrapped project.
 
 ## Windows Environment Challenges
 
 ### CLI Compatibility Issues
+
 During setup, discovered that both CodeRabbit CLI and GitHub Copilot CLI don't work on Windows in Git bash:
+
 - Copilot CLI needs [PowerShell 6+](https://github.com/github/copilot-cli?tab=readme-ov-file#prerequisites) or WSL
 - CodeRabbit CLI needs WSL
 
 ### WSL Evaluation
+
 I've never used WSL, and it seems fine.  
 However, I'm not equipped to bootstrap myself in Ubuntu since I'd have to reinstall all the tools (git, node, etc) and clone the code.  
 Also, I'd have to configure webstorm to work with WSL.  
 All these things are possible, and probably very fine, but I was looking for something simpler
 
 ### PowerShell 7 Solution
+
 I chose to install PowerShell 7 instead of committing to WSL.  
 Just installing PowerShell 7 made the Copilot CLI work, so I stuck with this.  
-Too bad for CodeRabbit, I'll rely on their GitHub integration only.  
+Too bad for CodeRabbit, I'll rely on their GitHub integration only.
 
 ### SpecKit issues from Copilot in GitBash
+
 While the Copilot CLI requires PowerShell7 to be installed but still works from GitBash, SpecKit doesn't.  
-On Windows, I found that it worked much better if using PowerShell end to end and initialize SpecKit with the PowerShell scripts.  
+On Windows, I found that it worked much better if using PowerShell end to end and initialize SpecKit with the PowerShell scripts.
