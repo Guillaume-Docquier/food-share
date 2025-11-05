@@ -1,5 +1,5 @@
 import { defineConfig, globalIgnores } from "eslint/config"
-import eslintConfigs from "@repo/eslint-config"
+import eslintConfigs from "@food-share/eslint-config"
 
 /** @type {import("eslint").Linter.Config[]} */
 export default defineConfig([
