@@ -7,6 +7,7 @@
 - [Spec-kit](https://github.com/github/spec-kit)
 - [MCPs](https://glama.ai/mcp/servers)
 - [Figma](https://www.figma.com/blog/introducing-figma-mcp-server/) MCP integration
+- [T3-oss/create-t3-turbo](https://github.com/t3-oss/create-t3-turbo/tree/main) for a turborepo template
 
 ## Also consider?
 
