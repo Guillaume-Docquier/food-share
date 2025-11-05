@@ -35,10 +35,10 @@ importers:
     devDependencies:
       '@food-share/eslint-config':
         specifier: workspace:*
-        version: link:../../packages/eslint-config
+        version: link:../../tooling/eslint-config
       '@food-share/typescript-config':
         specifier: workspace:*
-        version: link:../../packages/typescript-config
+        version: link:../../tooling/typescript-config
       '@types/node':
         specifier: ^22.15.3
         version: 22.15.3
@@ -55,11 +55,42 @@ importers:
         specifier: 5.9.2
         version: 5.9.2
 
-  packages/eslint-config:
+  packages/ui:
+    dependencies:
+      react:
+        specifier: ^19.2.0
+        version: 19.2.0
+      react-dom:
+        specifier: ^19.1.0
+        version: 19.1.0(react@19.2.0)
+    devDependencies:
+      '@food-share/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/eslint-config
+      '@food-share/typescript-config':
+        specifier: workspace:*
+        version: link:../../tooling/typescript-config
+      '@types/node':
+        specifier: ^22.15.3
+        version: 22.15.3
+      '@types/react':
+        specifier: 19.1.0
+        version: 19.1.0
+      '@types/react-dom':
+        specifier: 19.1.1
+        version: 19.1.1(@types/react@19.1.0)
+      eslint:
+        specifier: ^9.38.0
+        version: 9.38.0
+      typescript:
+        specifier: 5.9.2
+        version: 5.9.2
+
+  tooling/eslint-config:
     devDependencies:
       '@eslint/js':
         specifier: ^9.34.0
-        version: 9.34.0
+        version: 9.38.0
       '@next/eslint-plugin-next':
         specifier: ^15.5.0
         version: 15.5.0
@@ -97,38 +128,7 @@ importers:
         specifier: ^8.40.0
         version: 8.40.0(eslint@9.38.0)(typescript@5.9.2)
 
-  packages/typescript-config: {}
-
-  packages/ui:
-    dependencies:
-      react:
-        specifier: ^19.2.0
-        version: 19.2.0
-      react-dom:
-        specifier: ^19.1.0
-        version: 19.1.0(react@19.2.0)
-    devDependencies:
-      '@food-share/eslint-config':
-        specifier: workspace:*
-        version: link:../eslint-config
-      '@food-share/typescript-config':
-        specifier: workspace:*
-        version: link:../typescript-config
-      '@types/node':
-        specifier: ^22.15.3
-        version: 22.15.3
-      '@types/react':
-        specifier: 19.1.0
-        version: 19.1.0
-      '@types/react-dom':
-        specifier: 19.1.1
-        version: 19.1.1(@types/react@19.1.0)
-      eslint:
-        specifier: ^9.38.0
-        version: 9.38.0
-      typescript:
-        specifier: 5.9.2
-        version: 5.9.2
+  tooling/typescript-config: {}
 
 packages:
 
@@ -159,10 +159,6 @@ packages:
 
   '@eslint/eslintrc@3.3.1':
     resolution: {integrity: sha512-gtF186CXhIl1p4pJNGZw8Yc6RlshoePRvE0X91oPGb3vZ8pM3qOS9W9NGPat9LziaBV7XrJWGylNQXkGcnM3IQ==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  '@eslint/js@9.34.0':
-    resolution: {integrity: sha512-EoyvqQnBNsV1CWaEJ559rxXL4c8V92gxirbawSmVUOWXlsRxxQXl6LmCpdUblgxgSkDIqKnhzba2SjRTI/A5Rw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@eslint/js@9.38.0':
@@ -1614,8 +1610,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@eslint/js@9.34.0': {}
-
   '@eslint/js@9.38.0': {}
 
   '@eslint/object-schema@2.1.7': {}
@@ -1835,7 +1829,7 @@ snapshots:
   '@typescript-eslint/project-service@8.40.0(typescript@5.9.2)':
     dependencies:
       '@typescript-eslint/tsconfig-utils': 8.40.0(typescript@5.9.2)
-      '@typescript-eslint/types': 8.40.0
+      '@typescript-eslint/types': 8.46.2
       debug: 4.4.1
       typescript: 5.9.2
     transitivePeerDependencies:
