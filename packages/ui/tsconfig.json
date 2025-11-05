@@ -1,5 +1,5 @@
 {
-  "extends": "@food-share/typescript-config/react.json",
+  "extends": "@food-share/tsconfig/react.json",
   "compilerOptions": {
     "outDir": "dist"
   },

@@ -9,8 +9,8 @@
     "format": "prettier --check . --ignore-unknown",
     "format:fix": "prettier --write . --ignore-unknown --list-different",
     "test": "turbo run test",
-    "check-types": "turbo run check-types",
-    "all": "turbo run lint check-types build test"
+    "typecheck": "turbo run typecheck",
+    "all": "turbo run lint typecheck build test"
   },
   "devDependencies": {
     "prettier": "^3.6.2",

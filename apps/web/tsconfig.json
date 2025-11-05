@@ -1,5 +1,5 @@
 {
-  "extends": "@food-share/typescript-config/nextJs.json",
+  "extends": "@food-share/tsconfig/nextJs.json",
   "compilerOptions": {
     "plugins": [
       {

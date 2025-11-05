@@ -9,11 +9,11 @@
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",
     "generate:component": "turbo gen react-component",
-    "check-types": "tsc --noEmit"
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@food-share/eslint-config": "workspace:*",
-    "@food-share/typescript-config": "workspace:*",
+    "@food-share/tsconfig": "workspace:*",
     "@types/node": "^22.15.3",
     "@types/react": "19.1.0",
     "@types/react-dom": "19.1.1",

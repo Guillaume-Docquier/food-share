@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "eslint --max-warnings 0",
     "lint:fix": "npm run lint -- --fix",
-    "check-types": "next typegen && tsc --noEmit"
+    "typecheck": "next typegen && tsc --noEmit"
   },
   "dependencies": {
     "@food-share/ui": "workspace:*",
@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@food-share/eslint-config": "workspace:*",
-    "@food-share/typescript-config": "workspace:*",
+    "@food-share/tsconfig": "workspace:*",
     "@types/node": "^22.15.3",
     "@types/react": "19.1.0",
     "@types/react-dom": "19.1.1",
